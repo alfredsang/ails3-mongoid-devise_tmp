@@ -1,3 +1,13 @@
+require 'openssl'
+module OpenSSL
+  module SSL
+    remove_const :VERIFY_PEER
+  end
+end
+
+# Devise::Async.backend = :sidekiq
+
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -23,7 +33,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [ :email ]
+  config.authentication_keys = [ :authentication_token ]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -52,7 +62,7 @@ Devise.setup do |config|
   # It can be set to an array that will enable http authentication only for the
   # given strategies, for example, `config.http_authenticatable = [:token]` will
   # enable it only for token authentication.
-  # config.http_authenticatable = false
+  config.http_authenticatable = true
 
   # If http headers should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
@@ -82,7 +92,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "cb701d08e165b0dac897722aeff5b009c2d337f0efb05cf7e599002582e04d7e9a4caa782d3ac31e4bb0287b02ae335d62c368ca44980e167a78e44f62068511"
+  config.pepper = "cb701d08e165b0dac897722aeff5b009c2d337f0efb05cf7e599002582e04d7e9a4caa782d3ac31e4bb0287b02ae335d62c368ca44980e167a78e44f62068511"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -206,7 +216,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-
+  config.omniauth :weibo, '2250675151', '31038b39ec349dcf8df44bca59b0e446'
+   # :strategy_class => OmniAuth::Strategies::Tsina
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

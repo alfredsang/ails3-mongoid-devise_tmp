@@ -1,5 +1,6 @@
 require File.expand_path('../boot', __FILE__)
-
+# require File.expand_path('../../config/boot',__FILE__)
+#require 'oa-oauth'
 # Pick the frameworks you want:
 # require "active_record/railtie"
 require "action_controller/railtie"
@@ -17,7 +18,7 @@ end
 
 module Rails3MongoidDevise
   class Application < Rails::Application
-
+    
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       
@@ -79,6 +80,15 @@ module Rails3MongoidDevise
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    # require 'oa-oauth'
+    #  config.middleware.use OmniAuth::Strategies::Tsina, '2148700411', 'e6f92734ddd410e3e1e2f23cea5d4812'
+    #  
+    # require 'oa-oauth'  
+ #   config.middleware.use OmniAuth::Strategies::Tqq,  '801143996',  'cd1c29bbd17e73dd5f4064d475e0fb09'   #qq  
+    # config.middleware.use OmniAuth::Strategies::Tsina,  '2025205021',  '42611faeb494aeb05fa04c9ad80f3d71'  #sina  
+ #   config.middleware.use OmniAuth::Strategies::Renren,  '193569',  'c36a168be88d41ca9bf5fb44df2f3317'   #renren
+    
+    
     # Set local environment variables from a file /config/local_env.yml
     # See http://railsapps.github.com/rails-environment-variables.html
     config.before_configuration do

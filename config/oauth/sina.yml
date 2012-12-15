@@ -1,0 +1,10 @@
+development: 
+   key:    "774472872" 
+   secret: "f7a16fab166225c072d0a84f6e95bcdb" 
+   url:    "http://apps.weibo.com/peifumushijian" 
+   callback: "http://0.0.0.0:3000/syncs/sina/callback" 
+production: 
+   key:    "774472872" 
+   secret: "f7a16fab166225c072d0a84f6e95bcdb" 
+   url:    "http://apps.weibo.com/peifumushijian" 
+   callback: "http://0.0.0.0:3000/syncs/sina/callback"

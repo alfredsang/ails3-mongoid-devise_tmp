@@ -1,11 +1,11 @@
-source 'http://ruby.taobao.org'
-gem 'rails', '3.2.9'
+source "http://ruby.taobao.org"
+gem "rails", "3.2.8"
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem "sass-rails",   "~> 3.2.3"
+  gem "coffee-rails", "~> 3.2.1"
+  gem "uglifier", ">= 1.0.3"
 end
-gem 'jquery-rails'
+gem "jquery-rails"
 gem "mongoid", ">= 3.0.14"
 gem "rspec-rails", ">= 2.11.4", :group => [:development, :test]
 gem "database_cleaner", ">= 0.9.1", :group => :test
@@ -19,5 +19,10 @@ gem "devise", ">= 2.1.2"
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "better_errors", ">= 0.2.0", :group => :development
 gem "binding_of_caller", ">= 0.6.8", :group => :development
+# gem "oa-oauth", ">= 0.3.2"
 gem "omniauth"
-gem "json"
+# gem "json"
+# gem "omniauth_china"
+gem 'omniauth-weibo-oauth2', '~> 0.2.0'
+# gem 'oauth'
+# gem 'oauth_china'
