@@ -28,6 +28,7 @@
     <%= link_to "注册", new_user_registration_path %> or
     <%= link_to "登陆", new_user_session_path %>
       <%= link_to "微博登陆", user_omniauth_authorize_path(:weibo) %>
+      <%= link_to "git登陆", user_omniauth_authorize_path(:github) %>
   <% end %>
 
 <hr>

@@ -5,6 +5,7 @@ Rails3MongoidDevise::Application.routes.draw do
   
   #config/routes.rb  
    
+ get  '/users/auth/github'
  get  '/users/auth/weibo'
  
  devise_scope :user do

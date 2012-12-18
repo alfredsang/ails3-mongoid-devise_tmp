@@ -122,6 +122,9 @@ GEM
     omniauth (1.1.1)
       hashie (~> 1.2)
       rack
+    omniauth-github (1.0.1)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
     omniauth-oauth2 (1.0.0)
       oauth2 (~> 0.5.0)
       omniauth (~> 1.0)
@@ -221,6 +224,7 @@ DEPENDENCIES
   mongoid (>= 3.0.14)
   mongoid-rspec (>= 1.5.5)
   omniauth
+  omniauth-github
   omniauth-weibo-oauth2 (~> 0.2.0)
   quiet_assets (>= 1.0.1)
   rails (= 3.2.8)

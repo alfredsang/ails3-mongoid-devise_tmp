@@ -12,9 +12,7 @@ class User
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
 
-  validates_presence_of :email
-  validates_presence_of :encrypted_password
-  
+
   ## Recoverable
   field :reset_password_token,   :type => String
   field :reset_password_sent_at, :type => Time
@@ -41,15 +39,25 @@ class User
   # field :locked_at,       :type => Time
 
   ## Token authenticatable
-  field :authentication_token, :type => String
+  # field :authentication_token, :type => String
   # run 'rake db:mongoid:create_indexes' to create indexes
   index({ email: 1 }, { unique: true, background: true })
   field :name, :type => String
-  validates_presence_of :name
+  # validates_presence_of :name
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
   
+  validates_presence_of :email
+  # validates_presence_of :encrypted_password
+  
+  field :provider, :type => String
+  field :uid, :type => String
+  attr_accessible :provider, :uid
+
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    puts user
+     puts "---------------------------"
     unless user
       user = User.create(name:auth.extra.raw_info.name,
                            provider:auth.provider,
@@ -57,18 +65,27 @@ class User
                            email:auth.info.email,
                            password:Devise.friendly_token[0,20]
                            )
+ 
+                            puts "========#{user.email}======"
+       # user.save!
     end
     user
   end
   
   def self.new_with_session(params, session)
+     
       super.tap do |user|
         if data = session["devise.weibo_data"] && session["devise.weibo_data"]["extra"]["raw_info"]
           user.email = data["email"] if user.email.blank?
+          user.save!
+        end
+        
+        if data = session["devise.github_data"] && session["devise.github_data"]["extra"]["raw_info"]
+          user.email = data["email"] if user.email.blank?
+          user.save!
         end
       end
     end
     
-  
   
 end

@@ -216,7 +216,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :weibo, '2250675151', '31038b39ec349dcf8df44bca59b0e446'
+  config.omniauth :weibo, '979883957', 'd3545872f09ee46c50e4d25509133b57'
+  config.omniauth :github, '4e8592cf431f7497abcc', '90c1f731f5ff778f231cbb849f4b657962d37a21'
+  
    # :strategy_class => OmniAuth::Strategies::Tsina
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
